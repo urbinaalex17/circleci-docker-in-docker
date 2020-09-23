@@ -4,6 +4,8 @@ jobs:
     machine: 
       image: ubuntu-1604:201903-01
     steps:
+      - run: pwd
+      - run: ls -l
       - checkout
       - run: pwd
       - run: ls -l
@@ -14,6 +16,8 @@ jobs:
     machine: 
       image: ubuntu-1604:201903-01
     steps:
+      - run: pwd
+      - run: ls -l
       - checkout
       - run: pwd
       - run: ls -l
