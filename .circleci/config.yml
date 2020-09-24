@@ -35,7 +35,6 @@ jobs:
     machine: true
     steps:
       - gcp-gke/install
-      - gcp-gke/init
       - gcp-gke/rollout-image:
           cluster: cluster-1
           deployment: circleci-docker-in-docker
