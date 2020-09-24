@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleci-docker-in-docker
+  labels:
+    app: flask
+spec:
+  selector:
+    matchLabels:
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+        - image: gcr.io/virtual-crane-285416/circleci-docker-in-docker:0.1
+          name: circleci-dind
+          ports:
+            - containerPort: 5000
