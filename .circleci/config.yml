@@ -40,7 +40,7 @@ jobs:
           deployment: circleci-docker-in-docker
           container: circleci-dind
           image: gcr.io/virtual-crane-285416/circleci-docker-in-docker
-          tag: 0.1
+          tag: "0.1"
 
 
 workflows:
