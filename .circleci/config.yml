@@ -1,24 +1,26 @@
 version: 2
 jobs:
   build:
-    machine: 
-      image: ubuntu-1604:201903-01
+    docker: 
+      - image: docker:dind
     steps:
       - run: pwd
       - run: ls -l
       - checkout
+      - setup_remote_docker
       - run: pwd
       - run: ls -l
       - run: cksum src/server.py 
       - run: docker build -t circleci-docker-in-docker:0.1 --target build .
 
   deploy:
-    machine: 
-      image: ubuntu-1604:201903-01
+    docker: 
+      - image: docker:dind
     steps:
       - run: pwd
       - run: ls -l
       - checkout
+      - setup_remote_docker
       - run: pwd
       - run: ls -l
       - run: cksum src/server.py 
