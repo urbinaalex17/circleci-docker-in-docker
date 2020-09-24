@@ -35,6 +35,8 @@ jobs:
     machine: true
     steps:
       - gcp-gke/install
+      - gcp-gke/update-kubeconfig-with-credentials:
+          cluster: cluster-1
       - gcp-gke/rollout-image:
           cluster: cluster-1
           deployment: circleci-docker-in-docker
