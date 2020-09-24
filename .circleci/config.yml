@@ -4,13 +4,11 @@ orbs:
 jobs:
 
   build:
-    docker: 
-      - image: docker:dind
+    machine: true
     steps:
       - run: pwd
       - run: ls -l
       - checkout
-      - setup_remote_docker
       - run: pwd
       - run: ls -l
       - run: cksum src/server.py 
