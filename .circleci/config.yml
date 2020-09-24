@@ -22,7 +22,7 @@ jobs:
       - checkout
       - run: docker build -t circleci-docker-in-docker:0.1 --target production .
       - gcp-gcr/gcr-auth
-      - gcr/push-image:
+      - gcp-gcr/push-image:
           image: circleci-docker-in-docker
           tag: "0.1"
   
@@ -41,7 +41,6 @@ jobs:
 
 
 workflows:
-  version: 2
   build-and-approval-deploy:
     jobs:
       - build
