@@ -44,7 +44,9 @@ workflows:
   build-and-approval-deploy:
     jobs:
       - build
-      - publish
+      - publish:
+          requires:
+            - build
       - hold-deploy:
           type: approval
           requires:
