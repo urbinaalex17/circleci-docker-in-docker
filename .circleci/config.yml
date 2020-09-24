@@ -1,5 +1,8 @@
-version: 2
+version: 2.1
+orbs:
+  gcp-gcr: circleci/gcp-gcr@0.8.0
 jobs:
+
   build:
     docker: 
       - image: docker:dind
@@ -13,6 +16,16 @@ jobs:
       - run: cksum src/server.py 
       - run: docker build -t circleci-docker-in-docker:0.1 --target build .
 
+  publish:
+    machine: true
+    steps:
+      - checkout
+      - run: docker build -t circleci-docker-in-docker:0.1 --target production .
+      - gcp-gcr/gcr-auth
+      - gcr/push-image:
+          image: circleci-docker-in-docker
+          tag: "0.1"
+  
   deploy:
     docker: 
       - image: docker:dind
