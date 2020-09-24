@@ -16,8 +16,8 @@ jobs:
       - run: cksum src/server.py 
       - gcp-gcr/build-image:
           image: circleci-docker-in-docker
-          tag: "0.1"
           extra_build_args: "--target build"
+          tag: "0.1"
 
   publish:
     machine: true
