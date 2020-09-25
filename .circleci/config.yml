@@ -16,7 +16,8 @@ jobs:
       - run: ls -l
       - run: cksum src/server.py 
       - run: env
-      - run: docker build -t circleci-docker-in-docker:0.1 --target build .
+      - run: echo $SECRET_VAR > .env
+      - run: docker build -t circleci-docker-in-docker:0.1 --target build --secret id=env,src=.env .
       #- gcp-gcr/build-image:
       #    image: circleci-docker-in-docker
       #    extra_build_args: "--target build"
