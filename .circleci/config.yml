@@ -15,7 +15,7 @@ jobs:
       - run: ls -l
       - run: cksum src/server.py 
       - run: env
-      - run: echo $SECRET_VAR > .env
+      - run: echo -e $SECRET_VAR > .env
       - run: DOCKER_BUILDKIT=1 docker build --no-cache --progress=plain -t circleci-docker-in-docker:0.1 --target build --secret id=env,src=.env .
       #- gcp-gcr/build-image:
       #    image: circleci-docker-in-docker
@@ -28,7 +28,7 @@ jobs:
     steps:
       - checkout
       - gcp-gcr/gcr-auth
-      - run: echo $SECRET_VAR > .env
+      - run: echo -e $SECRET_VAR > .env
       - run: DOCKER_BUILDKIT=1 docker build --no-cache --progress=plain -t gcr.io/$GOOGLE_PROJECT_ID/circleci-docker-in-docker:0.1 --target production --secret id=env,src=.env .
       #- gcp-gcr/build-image:
       #    image: circleci-docker-in-docker
