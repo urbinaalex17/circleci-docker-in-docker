@@ -6,6 +6,8 @@ jobs:
 
   build:
     machine: true
+    environment:
+      DOCKER_BUILDKIT: 1
     steps:
       - run: pwd
       - run: ls -l
