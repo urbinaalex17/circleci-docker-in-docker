@@ -15,6 +15,7 @@ jobs:
       - run: pwd
       - run: ls -l
       - run: cksum src/server.py 
+      - run: env
       - gcp-gcr/build-image:
           image: circleci-docker-in-docker
           extra_build_args: "--target build"
