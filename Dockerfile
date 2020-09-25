@@ -1,3 +1,4 @@
+# syntax = docker/dockerfile:1.0-experimental
 FROM python:3.7-slim as build
 WORKDIR /app
 ADD requirements.txt .
