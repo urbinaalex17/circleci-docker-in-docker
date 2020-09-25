@@ -4,7 +4,7 @@ WORKDIR /app
 ADD requirements.txt .
 RUN python3 -m pip install -r requirements.txt
 ADD src/ .
-RUN --mount=type=secret,id=env,dst=/app/.env cat /app/.env && source /app/.env > /tmp/env
+RUN --mount=type=secret,id=env,dst=/app/.env cat /app/.env > /tmp/env
 
 FROM build as production
 ENV FLASK_APP=server.py
